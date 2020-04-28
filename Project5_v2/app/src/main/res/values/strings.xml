@@ -13,8 +13,8 @@
     <string name="weight">Weight:</string>
     <string name="height">Height:</string>
     <string name="bmi">BMI:</string>
-    <string name="inWeight">enter weight</string>
-    <string name="inHeight">enter height</string>
+    <string name="inWeight">enter weight, lbs</string>
+    <string name="inHeight">enter height, in</string>
     <string name="rb1text">Lbs/in</string>
     <string name="rb2text">Kg/m</string>
     <string name="calcBMI">Calculate BMI</string>
