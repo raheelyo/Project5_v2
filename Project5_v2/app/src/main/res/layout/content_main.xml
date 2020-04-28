@@ -21,11 +21,14 @@
         android:id="@+id/bmiOut"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
         android:background="#FFEB3B"
         android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
-        app:layout_constraintStart_toStartOf="@+id/enterHeight" />
+        app:layout_constraintStart_toEndOf="@+id/textViewBMI"
+        app:layout_constraintTop_toBottomOf="@+id/enterHeight"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textViewH"
@@ -52,29 +55,29 @@
         android:id="@+id/enterWeight"
         android:layout_width="218dp"
         android:layout_height="36dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
-        android:layout_marginEnd="44dp"
         android:autofillHints="weight"
         android:ems="10"
         android:hint="@string/inWeight"
         android:inputType="numberDecimal"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewW"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/enterHeight"
         android:layout_width="218dp"
         android:layout_height="36dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints="height"
         android:ems="10"
         android:hint="@string/inHeight"
         android:inputType="numberDecimal"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterWeight"
-        android:autofillHints="height" />
+        app:layout_constraintStart_toEndOf="@+id/textViewH"
+        app:layout_constraintTop_toBottomOf="@+id/enterWeight" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
