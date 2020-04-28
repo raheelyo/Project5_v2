@@ -1,5 +1,6 @@
 package com.example.project5_v2;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -20,7 +21,8 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private static float INVALID_BMI = -1;
+    private static float bmiFinal = INVALID_BMI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("BMI Calculator");
 
         final EditText enterWeight = findViewById(R.id.enterWeight);
         final EditText enterHeight = findViewById(R.id.enterHeight);
@@ -36,10 +39,12 @@ public class MainActivity extends AppCompatActivity {
         final RadioButton kgBtn = findViewById(R.id.kgBtn);
         final RadioButton lbsBtn = findViewById(R.id.lbsBtn);
         final Button calcBMI = findViewById(R.id.calcBMI);
+        final Button getAdvice = findViewById(R.id.getAdvice);
         final TextView bmiOut = findViewById(R.id.bmiOut);
         final int lbsConst = 703;
         final String entH = "Please enter height.";
         final String entW = "Please enter weight.";
+        final String entBMI = "Please calculate BMI.";
         final String unitCheck = "Kg/m";
         final DecimalFormat df = new DecimalFormat("0.00");
 
@@ -85,8 +90,22 @@ public class MainActivity extends AppCompatActivity {
                     }else{
                         res = Float.parseFloat(weight)*lbsConst/denom;
                     }
+                    bmiFinal = res;
                     String bmi = df.format(res);
                     bmiOut.setText(bmi);
+                }
+            }
+        });
+
+        getAdvice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(bmiFinal != INVALID_BMI){
+                    launchActivity();
+                }
+                else{
+                    Toast message = Toast.makeText(getApplicationContext(),entBMI,Toast.LENGTH_SHORT);
+                    message.show();
                 }
             }
         });
@@ -113,4 +132,19 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public static float returnBMI(){
+        return bmiFinal;
+    }
+
+    private void launchActivity(){
+        Intent intent = new Intent(this, SecondaryActivity.class);
+        startActivity(intent);
+    }
+
+    public static void resetBmiFinal(){
+        bmiFinal = INVALID_BMI;
+        return;
+    }
+
 }
