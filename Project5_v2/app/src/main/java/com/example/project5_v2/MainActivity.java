@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         final String entH = "Please enter height.";
         final String entW = "Please enter weight.";
         final String entBMI = "Please calculate BMI.";
+        final String entNonZero = "Values cannot be 0.";
         final String unitCheck = "Kg/m";
         final DecimalFormat df = new DecimalFormat("0.00");
 
@@ -77,10 +78,13 @@ public class MainActivity extends AppCompatActivity {
                 String weight = enterWeight.getText().toString();
                 String height = enterHeight.getText().toString();
                 if(weight.equals("")){
-                    Toast message = Toast.makeText(getApplicationContext(),entH,Toast.LENGTH_LONG);
+                    Toast message = Toast.makeText(getApplicationContext(),entW,Toast.LENGTH_LONG);
                     message.show();
                 }else if(height.equals("")){
-                    Toast message = Toast.makeText(getApplicationContext(),entW,Toast.LENGTH_SHORT);
+                    Toast message = Toast.makeText(getApplicationContext(),entH,Toast.LENGTH_SHORT);
+                    message.show();
+                }else if(Float.parseFloat(height) == 0 || Float.parseFloat(weight) == 0){
+                    Toast message = Toast.makeText(getApplicationContext(),entNonZero,Toast.LENGTH_SHORT);
                     message.show();
                 }else{
                     float res;
